@@ -4,11 +4,11 @@ import {
   PrimaryKey,
   Property,
 } from "@mikro-orm/core";
-import { AuthorRepository } from "./author.repository";
+import { UserRepository } from "./user.repository";
 
-@Entity({ customRepository: () => AuthorRepository })
-export class Author {
-  [EntityRepositoryType]?: AuthorRepository;
+@Entity({ customRepository: () => UserRepository })
+export class User {
+  [EntityRepositoryType]?: UserRepository;
 
   @PrimaryKey({ autoincrement: true })
   private id: number;

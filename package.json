@@ -4,11 +4,15 @@
   "description": "mikro orm 공부 및 테스트",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node ./src/index.ts",
     "test": "jest -i --colors --verbose --detectOpenHandles",
     "db": "docker-compose up -d"
   },
   "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/express": "^4.17.13",
     "@types/jest": "^27.4.1",
+    "@types/multer": "^1.4.7",
     "@types/node": "^16.11.10",
     "jest": "^27.5.1",
     "ts-jest": "^27.1.3",
@@ -18,7 +22,14 @@
   "dependencies": {
     "@mikro-orm/core": "^5.1.1",
     "@mikro-orm/mysql": "^5.1.1",
-    "reflect-metadata": "^0.1.13"
+    "body-parser": "^1.19.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "express": "^4.17.3",
+    "multer": "^1.4.4",
+    "reflect-metadata": "^0.1.13",
+    "routing-controllers": "^0.9.0",
+    "typedi": "^0.10.0"
   },
   "repository": {
     "type": "git",
