@@ -4,5 +4,6 @@
   "testEnvironmentOptions": {
     "NODE_ENV": "test"
   },
-  "restoreMocks": true
+  "restoreMocks": true,
+  "setupFiles": ["./jest-setup-file.ts"]
 }
