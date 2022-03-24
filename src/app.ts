@@ -38,7 +38,7 @@ export class App {
     this.initMiddleware();
     console.log("----- Start Database Connection -----");
     const orm = await init();
-
+    await orm.connect();
     console.log("- Connected to MySQL with MikroORM");
 
     this.app.use((req, res, next) => {

@@ -1,14 +1,17 @@
 import { EntityRepository } from "@mikro-orm/mysql";
-import { Service } from "typedi";
-import { User } from "./user.entity";
+import { User } from "../entities/user/user.entity";
 
 export class UserRepository extends EntityRepository<User> {
   async save(user: User) {
-    await this.em.persist(user);
+    console.log("UserRepository", this.em.id);
+    this.em.persist(user);
   }
 
   async findByName(name: string) {
-    const user = await this.em.findOne(User, { name });
-    return user;
+    console.log("UserRepository findByName", this.em.id);
+
+    const users = await this.em.qb(User, "user").where({ name }).getResult();
+
+    return users;
   }
 }

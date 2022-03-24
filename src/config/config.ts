@@ -7,22 +7,19 @@ export const init = async () => {
     entitiesTs: ["./src/**/*.entity.ts"], // path to our TS entities (src), relative to `baseDir`
     baseDir: process.cwd(),
     metadataProvider: ReflectMetadataProvider,
-    dbName: "test",
+    dbName: "saladweeks-dev",
     type: "mysql",
     debug: true,
-    host: "localhost",
+    host: "ec2-13-209-181-147.ap-northeast-2.compute.amazonaws.com",
     port: 3306,
-    user: "root",
-    password: "admin",
+    user: "test",
+    password:
+      "YdLgyp7FPfSXqYNx3GDhz5CFXX7KMnv7KFxW2Bk7eTtzkhFQdJxKmT6JSp7AvWEkrtwrsvgxZdFgw6WVpqq3D7RhD3xSbCnt7qPW",
     pool: {
       max: 50,
     },
+    connect: false,
   });
-
-  const generator = orm.getSchemaGenerator();
-
-  await generator.refreshDatabase(); // ensure db exists and is fresh
-  await generator.clearDatabase(); // removes all data
 
   return orm;
 };
