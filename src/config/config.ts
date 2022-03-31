@@ -7,17 +7,14 @@ export const init = async () => {
     entitiesTs: ["./src/**/*.entity.ts"], // path to our TS entities (src), relative to `baseDir`
     baseDir: process.cwd(),
     metadataProvider: ReflectMetadataProvider,
-    dbName: "saladweeks-dev",
+    dbName: "test",
     type: "mysql",
     debug: true,
-    host: "ec2-13-209-181-147.ap-northeast-2.compute.amazonaws.com",
+    host: "localhost",
     port: 3306,
-    user: "test",
-    password:
-      "YdLgyp7FPfSXqYNx3GDhz5CFXX7KMnv7KFxW2Bk7eTtzkhFQdJxKmT6JSp7AvWEkrtwrsvgxZdFgw6WVpqq3D7RhD3xSbCnt7qPW",
-    pool: {
-      max: 50,
-    },
+    user: "root",
+    password: "admin",
+
     connect: false,
   });
 
