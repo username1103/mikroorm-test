@@ -5,33 +5,39 @@ import {
   ManyToOne,
   PrimaryKey,
   Property,
+  Reference,
+  wrap,
 } from "@mikro-orm/core";
 import { Author } from "./author.entity";
 
 @Entity()
 export class Book {
   @PrimaryKey({ name: "book_id", autoincrement: true })
-  private _id: number;
+  private id: number;
 
   @Property()
-  private _name: string;
+  private name: string;
 
-  @ManyToOne(() => Author, { inversedBy: "books" })
-  private _author: IdentifiedReference<Author>;
+  @ManyToOne("Author", { name: "author_id", inversedBy: "books" })
+  private author: IdentifiedReference<Author>;
 
-  get id() {
-    return this._id;
+  getId() {
+    return this.id;
   }
 
-  get name() {
-    return this._name;
+  getName() {
+    return this.name;
   }
 
-  get author() {
-    return this._author;
+  getAuthor() {
+    return this.author;
   }
 
   setName(name: string) {
-    this.setName(name);
+    this.name = name;
+  }
+
+  setAuthor(author: Author) {
+    this.author = wrap(author).toReference();
   }
 }

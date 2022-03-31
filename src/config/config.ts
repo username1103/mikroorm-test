@@ -14,9 +14,16 @@ export const init = async () => {
     port: 3306,
     user: "root",
     password: "admin",
-
-    connect: false,
+    schemaGenerator: {
+      disableForeignKeys: false,
+      createForeignKeyConstraints: true,
+    },
   });
+
+  const generator = orm.getSchemaGenerator();
+
+  await generator.refreshDatabase();
+  await generator.clearDatabase();
 
   return orm;
 };
