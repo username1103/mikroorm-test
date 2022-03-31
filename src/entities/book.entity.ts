@@ -1,11 +1,9 @@
 import {
   Entity,
-  EntityRepositoryType,
   IdentifiedReference,
   ManyToOne,
   PrimaryKey,
   Property,
-  Reference,
   wrap,
 } from "@mikro-orm/core";
 import { Author } from "./author.entity";
@@ -18,7 +16,11 @@ export class Book {
   @Property()
   private name: string;
 
-  @ManyToOne("Author", { name: "author_id", inversedBy: "books" })
+  @ManyToOne("Author", {
+    name: "author_id",
+    wrappedReference: true,
+    inversedBy: "books",
+  })
   private author: IdentifiedReference<Author>;
 
   getId() {
@@ -29,8 +31,9 @@ export class Book {
     return this.name;
   }
 
-  getAuthor() {
-    return this.author;
+  async getAuthor() {
+    const author = await this.author.load();
+    return author;
   }
 
   setName(name: string) {
